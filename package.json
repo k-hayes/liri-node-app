@@ -1,0 +1,25 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "A LIRI app",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k-hayes/liri-node-app.git"
+  },
+  "keywords": [
+    "LIRI"
+  ],
+  "author": "Kate Hayes <kate.beaver@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/k-hayes/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/k-hayes/liri-node-app#readme",
+  "dependencies": {
+    "node-spotify-api": "^1.0.7"
+  }
+}
