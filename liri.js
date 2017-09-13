@@ -1,65 +1,90 @@
 var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
 var request = require('request');
+
+var nodeArgs = process.argv;
+
 var fs = require('fs');
 
+fs.writeFile("random.txt", spotify-this-song,"I Want it That Way", function(err) {
+	
+		// If the code experiences any errors it will log the error to the console.
+		if (err) {
+			return console.log(err);
+		}
 
 var Keys = require("./keys.js");
 var twitterKeys = keys.twitterKeys;
 
+var inputString = process.argv;
 
-function my-tweets() {
-	fs.appendFile('./log.txt', 'User Command: node liri.js my-tweets\n\n', (err) => {
-		if (err) throw err;
-    });
 
-    var client = new Twitter(twitterKeys);
-
-    var params = {screen_name: 'tracking_tobes', count: 20};
-
-    client.get('statuses/user_timeline', params, function(error, tweets, response) {
-		if (error) {
-			var errorStr = 'ERROR: Retrieving tweets -- ' + error;
-
-			fs.appendFile('./log.txt', errorStr, (err) => {
-				if (err) throw err;
-				console.log(errorStr);
-			});
-			return;
-		} else {
-			var outputStr = '------------------------\n' +
-							'Tweets:\n' + 
-							'------------------------\n\n';
-
-			for (var i = 0; i < tweets.length; i++) {
-				outputStr += 'Created: ' + tweets[i].created_at + '\n' + 
-							 'Content: ' + tweets[i].text + '\n' +
-							 '------------------------\n';
-			}
-
-			fs.appendFile('./log.txt', 'LIRI Response:\n\n' + outputStr + '\n', (err) => {
-				if (err) throw err;
-				console.log(outputStr);
-			});
-		}
+function my-tweets () {
+	var params = {screen_name: 'tracking_tobes' count: 20};
+	client.get('statuses/user_timeline', params, function(err, tweets, response) {
+	  if (!err) {
+		console.log(tweets);
+	  }
 	});
 }
-    
 
-var spotify-this-song
+function spotify-this-song () {
+	
+	var spotify = new Spotify({
+		id: c2724d21bf864d60917fe13b21e312aa,
+		secret: 1907ef4c5e204738a68c7522b1055788
+	  });
+	   
+	  spotify.search({ type: 'track', query: inputString[2] }, function(err, data) {
+		if (err) {
+			spotify.search({ type: 'track', query: 'I Saw The Sign' };
+		}
+	   
+	  console.log(data); 
+	  });
+}
 
-	fs.appendFile('./log.txt', 'node liri.js spotify-this-song ' + song + '\n\n', (err) => {
-		if (err) throw err;
-	});
+function movie-this () {
+	var movieName = "";
+	for (var i = 2; i < nodeArgs.length; i++) {
+		
+			if (i > 2 && i < nodeArgs.length) {
+		
+				movieName = movieName + "+" + nodeArgs[i];
+		
+			}
+		
+			else {
+		
+				movieName += nodeArgs[i];
+		
+			}
+		}
+	var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
 
-    search: function({ type: 'artist OR album OR track', query: 'My search query', limit: 20 }, callback);
-	if (song === '') {
-		search = 'The Sign Ace Of Base';
-	} else {
-		search = song;
-	}
+	console.log(queryUrl);
+	
+	request(queryUrl, function(error, response, body) {
+	  if (!error && response.statusCode === 200) {
+			console.log("The movie's Title is: " + JSON.parse(body).Title);			
+			console.log("Release Year: " + JSON.parse(body).Year);
+			console.log("The movie's IMDB rating is: " + JSON.parse(body).imdbRating);
+			console.log("The movie's Rotten Tomatoes rating is: " + JSON.parse(body).tomatoUserRating);
+			console.log("Country of Origin: " + JSON.parse(body).Country);
+			console.log("Language: " + JSON.parse(body).Language);
+			console.log("Plot: " + JSON.parse(body).Plot);
+			console.log("Actors: " + JSON.parse(body).Actors);
+			
+			
+		}
+	});			
+}
 
-var movie-this
-
-var do-what-it-says
-
+function do-what-it-says () {
+	fs.readFile("random.txt", "utf8", function(err, data) {
+    if (err) {
+      return console.log(err);
+		}
+		var dataArr = data.split(",");
+		
+}

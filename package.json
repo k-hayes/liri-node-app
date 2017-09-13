@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/k-hayes/liri-node-app#readme",
   "dependencies": {
-    "node-spotify-api": "^1.0.7"
+    "node-spotify-api": "^1.0.7",
+    "twitter": "^1.7.1"
   }
 }
